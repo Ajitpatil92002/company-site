@@ -25,7 +25,7 @@ export default function Page() {
 
     return (
         <div className='flex flex-col min-h-screen bg-gradient-to-b from-background to-background/80'>
-            <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+            <header className="sticky top-0 z-50 px-4 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
                 <div className="container flex h-16 items-center justify-between">
                     <Link className="flex items-center space-x-2" href="/">
                         <Zap className="h-6 w-6 text-primary" />
@@ -236,7 +236,7 @@ export default function Page() {
                                     <div className='absolute inset-0 bg-gradient-to-r from-primary to-primary-foreground opacity-10'></div>
                                     <CardContent className='relative p-6 space-y-4'>
                                         <p className='text-gray-500 dark:text-gray-400 italic'>
-                                            "{testimonial.quote}"
+                                            &quot;{testimonial.quote}&quot;
                                         </p>
                                         <div>
                                             <p className='font-semibold'>
