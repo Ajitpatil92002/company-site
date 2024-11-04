@@ -9,6 +9,7 @@ import {
     Globe,
     Mail,
     MapPin,
+    Menu,
     Phone,
     Search,
     Server,
@@ -24,56 +25,34 @@ export default function Page() {
 
     return (
         <div className='flex flex-col min-h-screen bg-gradient-to-b from-background to-background/80'>
-            <header className='sticky top-0 z-50 px-4 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60'>
-                <div className='container flex h-16 items-center'>
-                    <Link className='flex items-center space-x-2' href='/'>
-                        <Zap className='h-6 w-6 text-primary' />
-                        <span className='font-bold text-xl'>TechNova</span>
+            <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+                <div className="container flex h-16 items-center justify-between">
+                    <Link className="flex items-center space-x-2" href="/">
+                        <Zap className="h-6 w-6 text-primary" />
+                        <span className="font-bold text-xl">TechNova</span>
                     </Link>
-                    <nav className='ml-auto flex gap-4 sm:gap-6'>
-                        <Link
-                            className='text-sm font-medium hover:text-primary transition-colors'
-                            href='#services'
-                        >
-                            Services
-                        </Link>
-                        <Link
-                            className='text-sm font-medium hover:text-primary transition-colors'
-                            href='#about'
-                        >
-                            About
-                        </Link>
-                        <Link
-                            className='text-sm font-medium hover:text-primary transition-colors'
-                            href='#testimonials'
-                        >
-                            Testimonials
-                        </Link>
-                        <Link
-                            className='text-sm font-medium hover:text-primary transition-colors'
-                            href='#contact'
-                        >
-                            Contact
-                        </Link>
+                    <nav className="hidden md:flex gap-6">
+                        {["Services", "About", "Testimonials", "Contact"].map((item) => (
+                            <Link key={item} className="text-sm font-medium hover:text-primary transition-colors" href={`#${item.toLowerCase()}`}>
+                                {item}
+                            </Link>
+                        ))}
                     </nav>
+                    <Button className="hidden md:inline-flex">Get Started</Button>
+                    <Button variant="ghost" size="icon" className="md:hidden" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+                        <Menu className="h-6 w-6" />
+                    </Button>
                 </div>
             </header>
             {isMenuOpen && (
-                <div className='md:hidden'>
-                    <nav className='flex flex-col items-center py-4 bg-background'>
-                        {['Services', 'About', 'Testimonials', 'Contact'].map(
-                            item => (
-                                <Link
-                                    key={item}
-                                    className='w-full text-center py-2 hover:bg-accent'
-                                    href={`#${item.toLowerCase()}`}
-                                    onClick={() => setIsMenuOpen(false)}
-                                >
-                                    {item}
-                                </Link>
-                            )
-                        )}
-                        <Button className='mt-4'>Get Started</Button>
+                <div className="md:hidden">
+                    <nav className="flex flex-col items-center py-4 bg-background">
+                        {["Services", "About", "Testimonials", "Contact"].map((item) => (
+                            <Link key={item} className="w-full text-center py-2 hover:bg-accent" href={`#${item.toLowerCase()}`} onClick={() => setIsMenuOpen(false)}>
+                                {item}
+                            </Link>
+                        ))}
+                        <Button className="mt-4">Get Started</Button>
                     </nav>
                 </div>
             )}
